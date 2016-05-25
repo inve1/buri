@@ -1,0 +1,8 @@
+- name: Update apt
+  raw: apt-get update -qq
+
+- name: Install python 2.7
+  raw: apt-get install -qq python2.7
+
+- name: Python2 back to default
+  raw: update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
