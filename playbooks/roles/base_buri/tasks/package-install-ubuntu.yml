@@ -24,7 +24,6 @@
     - perl
     - perl-modules
     - python
-    - python-support
     - python-pip
     - rsync
     - ssh

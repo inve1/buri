@@ -10,6 +10,20 @@
   when: image_build and ansible_distribution == "Ubuntu" and cloud_target == "amazon" and buri_disk_type == "flat"
 
 - name: Install alternative bootloader extlinux to beginning of filesystem (flat disk)
+  file: path=/boot/extlinux state=directory
+  when: image_build and ansible_distribution == "Ubuntu" and cloud_target == "amazon" and buri_disk_type == "flat"
+
+- name: Install alternative bootloader extlinux to beginning of filesystem (flat disk)
   command: extlinux --install /boot/extlinux
   when: image_build and ansible_distribution == "Ubuntu" and cloud_target == "amazon" and buri_disk_type == "flat"
 
+- name: Install alternative bootloader extlinux to beginning of filesystem (flat disk)
+  copy: src=extlinux-update dest=/usr/sbin mode=0776
+  when: image_build and ansible_distribution == "Ubuntu" and cloud_target == "amazon" and buri_disk_type == "flat"
+
+- name: Install alternative bootloader extlinux to beginning of filesystem (flat disk)
+  command: extlinux-update
+  environment:
+   EXTLINUX_MEMDISK: 'false'
+   EXTLINUX_OS_PROBER: 'false' 
+  when: image_build and ansible_distribution == "Ubuntu" and cloud_target == "amazon" and buri_disk_type == "flat"
